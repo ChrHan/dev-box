@@ -1,24 +1,24 @@
 data "local_file" "provisioning_script" {
-    filename = "${path.module}/cloud-init.sh"
+  filename = "${path.module}/cloud-init.sh"
 }
 
 
 resource "digitalocean_droplet" "droplet-dev" {
-  image = "ubuntu-20-10-x64"
-  name = "droplet-dev"
-  region = "sgp1"
-  size = "s-2vcpu-2gb"
+  image              = "ubuntu-20-10-x64"
+  name               = "droplet-dev"
+  region             = "sgp1"
+  size               = "s-2vcpu-2gb"
   private_networking = true
   ssh_keys = [
     data.digitalocean_ssh_key.terraform.id
   ]
-	user_data = data.local_file.provisioning_script.content
+  user_data = data.local_file.provisioning_script.content
   connection {
-    host = self.ipv4_address
-    user = "root"
-    type = "ssh"
+    host        = self.ipv4_address
+    user        = "root"
+    type        = "ssh"
     private_key = file(var.pvt_key)
-    timeout = "2m"
+    timeout     = "2m"
   }
 }
 
@@ -35,13 +35,13 @@ resource "digitalocean_firewall" "droplet-dev_firewall" {
 
   outbound_rule {
     protocol              = "tcp"
-		port_range            = "1-65535"
+    port_range            = "1-65535"
     destination_addresses = ["0.0.0.0/0", "::/0"]
   }
 
   outbound_rule {
     protocol              = "udp"
-		port_range            = "1-65535"
+    port_range            = "1-65535"
     destination_addresses = ["0.0.0.0/0", "::/0"]
   }
 
