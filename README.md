@@ -5,12 +5,14 @@ Create a dev box on DigitalOcean using Terraform
 # Pre-requisite
 
 Install:
-[ ] `make` on your local computer
-[ ] `terraform` on your local computer
+
+- [ ] `make` on your local computer
+- [ ] `terraform` on your local computer
 
 For authentication:
-[ ] DigitalOcean API Token
-[ ] List your RSA key on DigitalOcean
+
+- [ ] DigitalOcean API Token
+- [ ] List your RSA key on DigitalOcean
 
 # How to use?
 
