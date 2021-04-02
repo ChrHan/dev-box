@@ -1,0 +1,2 @@
+do_token="TODO_DIGITALOCEAN_TOKEN"
+pvt_key="TODO_PATH_TO_RSA_KEY"
