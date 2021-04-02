@@ -9,3 +9,6 @@ apply:
 
 destroy:
 	terraform destroy $(VAR_FILE_COMMAND)
+
+get-compute:
+	doctl compute droplet get droplet-dev
